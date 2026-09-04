@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Você aceita Jesus?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Georgia', serif;
+      /* Substitua o caminho da imagem se tiver salvo localmente */
+      background: url('watermarked_img_13033748788559996238.jpg') no-repeat center center/cover;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      backdrop-filter: blur(5px);
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      min-height: 100px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, font-size 0.2s ease, padding 0.2s ease;
+    }
+
+    #btn-sim {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+    }
+
+    #btn-nao {
+      background-color: #f44336;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+    }
+
+    #mensagem-sucesso {
+      display: none;
+      font-size: 2rem;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="card">
+    <h1 id="titulo">Você aceita Jesus?</h1>
+    
+    <div class="buttons" id="area-botoes">
+      <button id="btn-sim" onclick="aceitou()">SIM</button>
+      <button id="btn-nao" onclick="recusou()">NÃO</button>
+    </div>
+
+    <div id="mensagem-sucesso">
+      ✨ Bem-vindo ao Cristianismo! ✨
+    </div>
+  </div>
+
+  <script>
+    let escalaSim = 1;
+    let escalaNao = 1;
+
+    function recusou() {
+      // Aumenta o botão SIM
+      escalaSim += 0.3;
+      const btnSim = document.getElementById('btn-sim');
+      btnSim.style.transform = `scale(${escalaSim})`;
+
+      // Diminui o botão NÃO
+      escalaNao -= 0.15;
+      const btnNao = document.getElementById('btn-nao');
+      
+      if (escalaNao <= 0.1) {
+        btnNao.style.display = 'none'; // Esconde se ficar muito pequeno
+      } else {
+        btnNao.style.transform = `scale(${escalaNao})`;
+      }
+    }
+
+    function aceitou() {
+      document.getElementById('titulo').style.display = 'none';
+      document.getElementById('area-botoes').style.display = 'none';
+      document.getElementById('mensagem-sucesso').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
